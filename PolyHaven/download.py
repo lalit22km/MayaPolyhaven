@@ -1,4 +1,8 @@
-from PySide2.QtCore import QThread, Signal
+try:
+    from PySide6.QtCore import QThread, Signal
+except ImportError:
+    from PySide2.QtCore import QThread, Signal
+
 import os
 import json
 import requests

@@ -1,11 +1,17 @@
 import os
 import sys
 from enum import Enum
-from PySide2.QtWidgets import QMainWindow, QPushButton, QProgressBar, QLineEdit, QFileDialog, QMenuBar, QMenu, QMessageBox
-from PySide2.QtCore import QThread, Signal
-from PySide2 import QtWidgets, QtCore, QtGui
-import maya.OpenMayaUI as omui
-from shiboken2 import wrapInstance
+
+try:
+    from PySide6.QtWidgets import QMainWindow, QPushButton, QProgressBar, QLineEdit, QFileDialog, QMenuBar, QMenu, QMessageBox
+    from PySide6.QtCore import QThread, Signal
+    from PySide6 import QtWidgets, QtCore, QtGui
+    from shiboken6 import wrapInstance
+except ImportError:
+    from PySide2.QtWidgets import QMainWindow, QPushButton, QProgressBar, QLineEdit, QFileDialog, QMenuBar, QMenu, QMessageBox
+    from PySide2.QtCore import QThread, Signal
+    from PySide2 import QtWidgets, QtCore, QtGui
+    from shiboken2 import wrapInstance
 
 basePath = 'C:/PolyHaven'
 sys.path.append(basePath)
@@ -177,7 +183,7 @@ class Window(QtWidgets.QMainWindow):
 
     # Show About window
     def show_about_info(self):
-         QMessageBox.about(self, "About", "Version: v0.0.17 beta 2\nOmid Ghotbi\nomidt.gh@gmail.com")
+         QMessageBox.about(self, "About", "Version: v0.0.17 beta 1\nOmid Ghotbi\nomidt.gh@gmail.com")
 
     # Pepulate main brunch of tree view
     def add_to_tree(self, categories, nested_subcategories):

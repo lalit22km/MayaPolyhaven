@@ -1,4 +1,8 @@
-from PySide2.QtCore import QThread, Signal
+try:
+    from PySide6.QtCore import QThread, Signal
+except ImportError:
+    from PySide2.QtCore import QThread, Signal
+
 import os
 import json
 from get_path import getPath
@@ -14,7 +18,7 @@ class SyncThread(QThread):
 
     def run(self):
         # URL of the API
-        url = "https://api.polyhaven.com/assets?t=all"
+        url = "https://api.polyhaven.com/assets?t=all&future=true"
         
         # Send a GET request to the API
         response = self.session.get(url)
